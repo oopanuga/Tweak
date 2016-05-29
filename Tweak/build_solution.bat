@@ -1,0 +1,10 @@
+REM Build Solution
+
+SET PATH_MSBUILD=%1
+SET FILE_SLN=%2
+SET CONFIGURATION=%3
+
+if [%1]==[] (
+  SET CONFIGURATION=Debug
+)
+%PATH_MSBUILD%\MSBuild %FILE_SLN% /p:Configuration=%CONFIGURATION%

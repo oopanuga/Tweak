@@ -1,0 +1,10 @@
+﻿{
+    "WebSettings": {
+        "Name": "somewebsite",
+        "Url": "somurl.test.test"
+    },
+    "WebSettings2": {
+        "Name2": "somewebsite2",
+        "Url2": "somurl.test.test2"
+    }
+}

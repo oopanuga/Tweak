@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Tweak</id>
+    <version>0.5.0</version>
+    <authors>Oluwaseun Opanuga</authors>
+    <owners>Oluwaseun Opanuga</owners>
+    <projectUrl>https://github.com/oopanuga/tweak</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Tweak is library that helps you to create strongly typed settings loaded from different sources e.g. appsettings, json etc.</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2015 Tweak</copyright>
+    <summary />
+    <language>en-US</language>
+    <tags>settings setting configuration config strongly types json appsettings</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Tweak.dll" target="lib\net45\Tweak.dll" />
+    <file src="bin\Release\Tweak.XML" target="lib\net45\Tweak.XML" />
+  </files>
+</package>
