@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IApiSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IApiSettings.cs" />
     <Compile Include="ApiSettings.cs" />
     <Compile Include="ApiSettingsJson.cs" />
   </ItemGroup>
