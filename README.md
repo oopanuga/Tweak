@@ -8,7 +8,7 @@ Some key features of Tweak are,
 1. Read settings from a settings source. It currently has AppSettingsReader and JsonSettingsReader.
 2. Write settings to a settings source.
 3. Create custom setting readers and writers.
-4. Can easily register settings to any IOC of your choice
+4. Can easily register settings using any IOC of your choice
 
 ### Installing Tweak - [nuget](https://www.nuget.org/packages/Tweak/)
 
@@ -19,7 +19,7 @@ PM> Install-Package CommonProvider
 ### Release Notes
 Release notes can be found [here](https://github.com/oopanuga/tweak/blob/master/RELEASE-NOTES.txt)
 
-### Using Tweak - Reading settings defined in appsettings section of config 
+### Using Tweak 
 
 Create your settings class and inherit from SettingsBase<AppSettingsReader>
 ```c#
@@ -67,7 +67,7 @@ apiSettings.Read();
 var apiKey = apiSettings.ApiKey;
 ```
 
-See detailed examples [here](https://github.com/oopanuga/tweak/tree/master/tweak.examples)
+See detailed examples [here](https://github.com/oopanuga/Tweak/tree/master/Tweak.Examples)
 
 ### License
 
