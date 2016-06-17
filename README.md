@@ -67,7 +67,7 @@ apiSettings.Read();
 var apiKey = apiSettings.ApiKey;
 ```
 
-See detailed examples [here](https://github.com/oopanuga/Tweak/tree/master/Tweak.Examples)
+See more examples [here](https://github.com/oopanuga/Tweak/tree/master/Tweak.Examples)
 
 ### License
 
