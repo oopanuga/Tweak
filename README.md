@@ -8,12 +8,12 @@ Some key features of Tweak are,
 1. Read settings from a settings source. Currently supported sources are AppSettings (AppSettingsReader) and Json (JsonSettingsReader).
 2. Write settings to a settings source.
 3. Create custom setting readers and writers.
-4. Can easily register settings using any IOC of your choice
+4. Can easily register settings using any Ioc of your choice
 
 ### Installing Tweak - [nuget](https://www.nuget.org/packages/Tweak/)
 
 ```
-PM> Install-Package CommonProvider
+PM> Install-Package Tweak
 ```
 
 ### Release Notes
