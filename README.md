@@ -5,7 +5,7 @@ Tweak is a library that helps you to create strongly typed settings read from di
 ### Key Features
 Some key features of Tweak are,
 
-1. Read settings from a settings source. It currently has AppSettingsReader and JsonSettingsReader.
+1. Read settings from a settings source. Currently supported sources are AppSettings (AppSettingsReader) and Json (JsonSettingsReader).
 2. Write settings to a settings source.
 3. Create custom setting readers and writers.
 4. Can easily register settings using any IOC of your choice
