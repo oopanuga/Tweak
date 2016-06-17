@@ -21,7 +21,7 @@ Release notes can be found [here](https://github.com/oopanuga/tweak/blob/master/
 
 ### Using Tweak 
 
-Create your settings class and inherit from SettingsBase<AppSettingsReader>
+To read settings from an app or web config file, create your settings class, inherit from SettingsBase and specify the AppSettingsReader
 ```c#
 public interface IApiSettings
 {
