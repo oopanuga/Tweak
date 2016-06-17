@@ -43,11 +43,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sample.cs" />
+    <Compile Include="IApiSettings.cs" />
+    <Compile Include="ApiSettings.cs" />
+    <Compile Include="ApiSettingsJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="WebsiteSettings.json">
+    <None Include="ApiSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

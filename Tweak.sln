@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40302.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweak", "Tweak\Tweak.csproj", "{702C0D0B-2AD6-44E7-8360-0C86B40579E4}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{29F07ED9-A071-45A9-81FB-B3537C7BD199}"
 	ProjectSection(SolutionItems) = preProject
 		Tweak\build_solution.bat = Tweak\build_solution.bat
+		StyleCop\RunStyleCop.msbuild = StyleCop\RunStyleCop.msbuild
+		StyleCop\StyleCop.xsl = StyleCop\StyleCop.xsl
 		Tweak\Tweak.nuspec = Tweak\Tweak.nuspec
 	EndProjectSection
 EndProject

@@ -4,8 +4,16 @@ using System.Configuration;
 
 namespace Tweak.Sources.AppSettings
 {
+    /// <summary>
+    /// Represents a class that reads settings defined in the appSettings section of an app or web config file.
+    /// </summary>
+    /// <seealso cref="Tweak.ISettingsReader" />
     public class AppSettingsReader : ISettingsReader
     {
+        /// <summary>
+        /// Reads settings defined in the appSettings section of an app or web config file.
+        /// </summary>
+        /// <returns>The settings.</returns>
         public IDictionary<string, string> Read()
         {
             return ToDictionary(ConfigurationManager.AppSettings);

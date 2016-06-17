@@ -6,10 +6,11 @@
     <authors>Oluwaseun Opanuga</authors>
     <owners>Oluwaseun Opanuga</owners>
     <projectUrl>https://github.com/oopanuga/tweak</projectUrl>
+    <licenseUrl>https://github.com/oopanuga/tweak/blob/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Tweak is a library that helps you to create strongly typed settings loaded from different sources e.g. appsettings, json etc.</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright 2015 Tweak</copyright>
+    <description>Tweak is a library that helps you to create strongly typed settings read from different sources e.g. appsettings, json etc.</description>
+    <releaseNotes>https://github.com/oopanuga/tweak/blob/master/RELEASE-NOTES.txt</releaseNotes>
+    <copyright>Copyright 2016 Tweak</copyright>
     <summary />
     <language>en-US</language>
     <tags>settings setting configuration config strongly types json appsettings</tags>

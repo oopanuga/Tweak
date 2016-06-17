@@ -6,19 +6,26 @@ using System.Web.Script.Serialization;
 
 namespace Tweak.Sources.Json
 {
+    /// <summary>
+    /// Represents a class that reads settings defined in a json file.
+    /// </summary>
+    /// <seealso cref="Tweak.ISettingsReader" />
     public class JsonSettingsReader : ISettingsReader
     {
+        /// <summary>
+        /// Reads settings defined in a json file.
+        /// </summary>
+        /// <returns></returns>
         public IDictionary<string, string> Read()
         {
             var settings = new Dictionary<string, string>();
             var jss = new JavaScriptSerializer();
 
-            foreach (var file in JsonSettingsFileStore.Files)
+            foreach (var file in JsonSettingsFileManager.Files)
             {
-                var filePath =
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file.FileName);
+                var fileName =  Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file.FileName);
 
-                using (var fileReader = new StreamReader(filePath, file.Encoding))
+                using (var fileReader = new StreamReader(fileName, file.Encoding))
                 {
                     var json = fileReader.ReadToEnd();
                     var dictionary = jss.Deserialize<Dictionary<string, dynamic>>(json);

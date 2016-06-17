@@ -44,12 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SettingDescriptor.cs" />
+    <Compile Include="SettingsFile.cs" />
     <Compile Include="Sources\AppSettings\AppSettingsReader.cs" />
-    <Compile Include="IReadSettings.cs" />
-    <Compile Include="IReadWriteSettings.cs" />
-    <Compile Include="Sources\Json\JsonSettingsFileStore.cs" />
-    <Compile Include="FileStore.cs" />
+    <Compile Include="Sources\Json\JsonSettingsFileManager.cs" />
+    <Compile Include="SettingsFileStore.cs" />
     <Compile Include="ISettingsReader.cs" />
     <Compile Include="ISettingsWriter.cs" />
     <Compile Include="Sources\Json\JsonSettingsReader.cs" />
