@@ -19,9 +19,11 @@ PM> Install-Package Tweak
 ### Release Notes
 Release notes can be found [here](https://github.com/oopanuga/tweak/blob/master/RELEASE-NOTES.txt)
 
-### Using Tweak 
+### Using Tweak
 
-To read settings from an app or web config file, create your settings class, inherit from SettingsBase and specify the AppSettingsReader
+##### Settings from an app settings source
+
+Create your settings class, inherit from SettingsBase and specify the AppSettingsReader
 ```c#
 public interface IApiSettings
 {
@@ -36,7 +38,7 @@ public class ApiSettings : SettingsBase<AppSettingsReader>, IApiSettings
 }
 ```
 
-Define settings in config. Your setting key could be a PropertyName or ClassName.PropertyName or Namespace.ClassName.PropertyName
+Define settings in appSettings section of config. Your setting key could be a PropertyName or ClassName.PropertyName or Namespace.ClassName.PropertyName
 ```xml
 <appSettings>
 	<add key="Tweak.Examples.ApiSettings.ApiKey" value="45017dc5-bd7c-47fd-9495-06953e329db0" />
@@ -44,7 +46,7 @@ Define settings in config. Your setting key could be a PropertyName or ClassName
 </appSettings>
 ```
 
-Read settings from config file. Setting are automatically read by default upon instantiation of the settings class.
+Read settings from config. By default settings are automatically read upon instantiation of a settings class.
 ```c#
 var apiSettings = new ApiSettings();
 var apiKey = apiSettings.ApiKey;
@@ -67,7 +69,45 @@ apiSettings.Read();
 var apiKey = apiSettings.ApiKey;
 ```
 
-See more examples [here](https://github.com/oopanuga/Tweak/tree/master/Tweak.Examples)
+##### Settings from a json source
+
+Create your settings class, inherit from SettingsBase and specify the JsonSettingsReader
+```c#
+public interface IApiSettings
+{
+	string ApiKey { get; set; }
+	string Endpoint { get; set; }
+}
+	
+public class ApiSettings : SettingsBase<JsonSettingsReader>, IApiSettings
+{
+	public string ApiKey { get; set; }
+	public string Endpoint { get; set; }
+}
+```
+
+Define settings in json file
+```json
+{
+    "ApiSettings": {
+        "ApiKey": "97e4406d-7bbc-44a9-9895-c68ef498a978",
+        "Endpoint": "http://api.jsonexample.test"
+    }
+}
+```
+
+Add json file to filestore. Please note that ApiSettings.json is the file name in this case
+```c#
+JsonSettingsFileManager.AddFile("ApiSettings.json");
+```
+
+Read settings from json file
+```c#
+var apiSettings = new ApiSettings();
+var apiKey = apiSettings.ApiKey;
+```
+
+See examples in solution [here](https://github.com/oopanuga/Tweak/tree/master/Tweak.Examples)
 
 ### License
 
