@@ -21,7 +21,7 @@ Release notes can be found [here](https://github.com/oopanuga/tweak/blob/master/
 
 ### Using Tweak
 
-##### Settings from an app settings source
+##### App Settings source
 
 Create your settings class, inherit from SettingsBase and specify the AppSettingsReader
 ```c#
@@ -52,7 +52,7 @@ var apiSettings = new ApiSettings();
 var apiKey = apiSettings.ApiKey;
 ```
 
-Prevent settings from being automatically read upon instantiation of settings class.
+Prevent settings from being automatically read upon instantiation of settings class. This applies to any SettingsReader including JsonSettingsReader.
 ```c#
 public class ApiSettings : SettingsBase<AppSettingsReader>, IApiSettings
 {
@@ -69,7 +69,7 @@ apiSettings.Read();
 var apiKey = apiSettings.ApiKey;
 ```
 
-##### Settings from a json source
+##### Json source
 
 Create your settings class, inherit from SettingsBase and specify the JsonSettingsReader
 ```c#
@@ -86,7 +86,7 @@ public class ApiSettings : SettingsBase<JsonSettingsReader>, IApiSettings
 }
 ```
 
-Define settings in json file
+Define settings in json file. ApiSettings below represents the name of the class. You could also include the class Namespace 
 ```json
 {
     "ApiSettings": {
