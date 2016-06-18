@@ -19,12 +19,12 @@ namespace Tweak.Tests
                 var apiKey = "1067bf35-f5b5-4939-9207-4a43cdd824dd";
                 settings.Add("ClientId", clientId.ToString());
                 settings.Add("ApiKey", apiKey);
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
-                var apiClientSettings = new ApiSettings();
+                var apiSettings = new ApiSettings();
 
-                Assert.AreEqual(clientId, apiClientSettings.ClientId);
-                Assert.AreEqual(apiKey, apiClientSettings.ApiKey);
+                Assert.AreEqual(clientId, apiSettings.ClientId);
+                Assert.AreEqual(apiKey, apiSettings.ApiKey);
             }
 
             [Test]
@@ -33,12 +33,12 @@ namespace Tweak.Tests
                 var settings = new Dictionary<string, string>();
                 var clientId = 4;
                 settings.Add("ApiSettings.ClientId", clientId.ToString());
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
-                var apiClientSettings = new ApiSettings();
+                var apiSettings = new ApiSettings();
                 var clientDetails = new ClientDetails();
 
-                Assert.AreEqual(clientId, apiClientSettings.ClientId);
+                Assert.AreEqual(clientId, apiSettings.ClientId);
                 Assert.AreEqual(0, clientDetails.ClientId);
             }
 
@@ -48,12 +48,12 @@ namespace Tweak.Tests
                 var settings = new Dictionary<string, string>();
                 var clientId = 4;
                 settings.Add("Tweak.Tests.TestClasses.ApiSettings.ClientId", clientId.ToString());
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
-                var apiClientSettings = new ApiSettings();
+                var apiSettings = new ApiSettings();
                 var clientDetails = new ClientDetails();
 
-                Assert.AreEqual(clientId, apiClientSettings.ClientId);
+                Assert.AreEqual(clientId, apiSettings.ClientId);
                 Assert.AreEqual(0, clientDetails.ClientId);
             }
 
@@ -63,11 +63,11 @@ namespace Tweak.Tests
                 var settings = new Dictionary<string, string>();
                 var clientId = 4;
                 settings.Add("clientId", clientId.ToString());
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
-                var apiClientSettings = new ApiSettings();
+                var apiSettings = new ApiSettings();
 
-                Assert.AreEqual(0, apiClientSettings.ClientId);
+                Assert.AreEqual(0, apiSettings.ClientId);
             }
 
             [Test]
@@ -76,7 +76,7 @@ namespace Tweak.Tests
                 var settings = new Dictionary<string, string>();
                 var clientId = "someclientid";
                 settings.Add("ClientId", clientId);
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
                 Assert.Throws<FormatException>(() => { new ApiSettings(); });
             }
@@ -89,11 +89,11 @@ namespace Tweak.Tests
                 var clientId2 = 10;
                 settings.Add("ClientId", clientId1.ToString());
                 settings.Add("Tweak.Tests.TestClasses.ApiSettings.ClientId", clientId2.ToString());
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
-                var apiClientSettings = new ApiSettings();
+                var apiSettings = new ApiSettings();
 
-                Assert.AreEqual(clientId2, apiClientSettings.ClientId);
+                Assert.AreEqual(clientId2, apiSettings.ClientId);
             }
         }
 
@@ -108,22 +108,22 @@ namespace Tweak.Tests
                 var apiKey = "1067bf35-f5b5-4939-9207-4a43cdd824dd";
                 settings.Add("ClientId", clientId.ToString());
                 settings.Add("ApiKey", apiKey);
-                CustomSettingReader.Settings = settings;
+                CustomSettingsReader.Settings = settings;
 
-                var apiClientSettings = new ApiSettings();
+                var apiSettings = new ApiSettings();
 
-                Assert.AreEqual(clientId, apiClientSettings.ClientId);
-                Assert.AreEqual(apiKey, apiClientSettings.ApiKey);
+                Assert.AreEqual(clientId, apiSettings.ClientId);
+                Assert.AreEqual(apiKey, apiSettings.ApiKey);
 
                 var newClientId = 5;
                 var newApiKey = "5611f7e8-d0cd-44c6-ad66-9929b397009f";
 
-                apiClientSettings.ClientId = newClientId;
-                apiClientSettings.ApiKey = newApiKey;
-                apiClientSettings.Write();
+                apiSettings.ClientId = newClientId;
+                apiSettings.ApiKey = newApiKey;
+                apiSettings.Write();
 
-                Assert.AreEqual(newClientId.ToString(), CustomSettingWriter.Settings["ClientId"]);
-                Assert.AreEqual(newApiKey, CustomSettingWriter.Settings["ApiKey"]);
+                Assert.AreEqual(newClientId.ToString(), CustomSettingsWriter.Settings["ClientId"]);
+                Assert.AreEqual(newApiKey, CustomSettingsWriter.Settings["ApiKey"]);
             }
         }
     }

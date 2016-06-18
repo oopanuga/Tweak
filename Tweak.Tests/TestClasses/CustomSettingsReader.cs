@@ -2,7 +2,7 @@
 
 namespace Tweak.Tests.TestClasses
 {
-    public class CustomSettingReader : ISettingsReader
+    public class CustomSettingsReader : ISettingsReader
     {
         public static Dictionary<string, string> Settings { get; set; }
         public IDictionary<string, string> Read()

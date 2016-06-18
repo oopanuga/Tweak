@@ -21,7 +21,7 @@ Release notes can be found [here](https://github.com/oopanuga/tweak/blob/master/
 
 ### Using Tweak
 
-##### App Settings source
+##### Reading from an App Settings source
 
 Create your settings class, inherit from SettingsBase and specify the AppSettingsReader
 ```c#
@@ -69,7 +69,7 @@ apiSettings.Read();
 var apiKey = apiSettings.ApiKey;
 ```
 
-##### Json source
+##### Reading from a Json source
 
 Create your settings class, inherit from SettingsBase and specify the JsonSettingsReader
 ```c#
@@ -106,6 +106,43 @@ Read settings from json file
 var apiSettings = new ApiSettings();
 var apiKey = apiSettings.ApiKey;
 ```
+
+##### Writing to a settings source
+
+There are currently no built in SettingsWriters, however implementing one is quite easy.
+
+```c#
+public class CustomSettingsWriter : ISettingsWriter
+{
+	public void Write(IDictionary<string, string> settings)
+	{
+		//write to settings source here
+	}
+}
+```
+
+Define writable settings (this assumes that you've already implemented a CustomSettingsReader)
+```c#
+public interface IApiSettings
+{
+	string ApiKey { get; set; }
+	string Endpoint { get; set; }
+}
+	
+public class ApiSettings : SettingsBase<CustomSettingsReader, CustomSettingsWriter>, IApiSettings
+{
+	public string ApiKey { get; set; }
+	public string Endpoint { get; set; }
+}
+```
+
+Write to settings source
+```c#
+var apiSettings = new ApiSettings();
+apiSettings.ApiKey = "5611f7e8-d0cd-44c6-ad66-9929b397009f";
+apiSettings.Write();
+```
+
 
 See examples in solution [here](https://github.com/oopanuga/Tweak/tree/master/Tweak.Examples)
 
