@@ -1,5 +1,5 @@
 Version 1.1.0
-- Throw SettingsNotFoundException when settings not found.
+- Throw SettingsNotFoundException when settings not found after a read or during a write to source.
 - Refactored code
 
 Version 1.0.0
