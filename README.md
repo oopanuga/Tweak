@@ -109,7 +109,7 @@ var apiKey = apiSettings.ApiKey;
 
 ##### Writing to any settings source
 
-There are currently no built in SettingsWriter, however implementing one is quite easy.
+There is currently no built-in SettingsWriter, however implementing one is quite easy.
 
 ```c#
 public class CustomSettingsWriter : ISettingsWriter
