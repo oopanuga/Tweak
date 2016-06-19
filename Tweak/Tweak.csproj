@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SettingsNotFoundException.cs" />
     <Compile Include="SettingsFile.cs" />
     <Compile Include="Sources\AppSettings\AppSettingsReader.cs" />
     <Compile Include="Sources\Json\JsonSettingsFileManager.cs" />

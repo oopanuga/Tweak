@@ -1,2 +1,6 @@
+Version 1.1.0
+- Throw SettingsNotFoundException when a Read operation returns a null or empty dictionary
+- Refactored code
+
 Version 1.0.0
 - First release
