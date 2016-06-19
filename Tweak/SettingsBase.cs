@@ -18,7 +18,7 @@ namespace Tweak
         /// <value>
         /// The settings.
         /// </value>
-        protected IDictionary<string, string> Settings { get; set; }
+        protected IDictionary<string, string> Settings { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsBase{TSettingsReader}"/> class.
