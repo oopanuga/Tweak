@@ -1,5 +1,5 @@
 Version 1.1.0
-- Throw SettingsNotFoundException when a Read operation returns a null or empty dictionary
+- Throw SettingsNotFoundException when settings not found.
 - Refactored code
 
 Version 1.0.0
