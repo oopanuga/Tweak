@@ -21,6 +21,8 @@ namespace Tweak.Sources.AppSettings
 
         private IDictionary<string, string> ToDictionary(NameValueCollection nameValueCollection)
         {
+            if (nameValueCollection == null) return null;
+                
             var dictionary = new Dictionary<string, string>();
             foreach (var key in nameValueCollection.AllKeys)
             {

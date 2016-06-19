@@ -12,7 +12,13 @@ namespace Tweak
     public class SettingsBase<TSettingsReader>
         where TSettingsReader : ISettingsReader, new()
     {
-        public IDictionary<string, string> Settings { get; protected set; }
+        /// <summary>
+        /// Gets or sets the settings.
+        /// </summary>
+        /// <value>
+        /// The settings.
+        /// </value>
+        protected IDictionary<string, string> Settings { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsBase{TSettingsReader}"/> class.
@@ -32,18 +38,20 @@ namespace Tweak
         /// </summary>
         public void Read()
         {
+            ReadSettings();
+            SetPropertiesWithSettings();
+        }
+
+        /// <summary>
+        /// Reads settings from source.
+        /// </summary>
+        /// <exception cref="SettingsNotFoundException">Settings not found.</exception>
+        protected void ReadSettings()
+        {
             Settings = new TSettingsReader().Read();
-            var type = GetType();
-
-            foreach (var propertyInfo in type.GetProperties())
+            if (Settings == null || !Settings.Any())
             {
-                var setting = FindMatchingSetting(propertyInfo, type);
-
-                if (!setting.Equals(default(KeyValuePair<string, string>)))
-                {
-                    propertyInfo.SetValue(this,
-                        Convert.ChangeType(setting.Value, propertyInfo.PropertyType));
-                }
+                throw new SettingsNotFoundException("Settings not found.");
             }
         }
 
@@ -75,6 +83,21 @@ namespace Tweak
 
             return setting;
         }
+
+        private void SetPropertiesWithSettings()
+        {
+            var type = GetType();
+            foreach (var propertyInfo in type.GetProperties())
+            {
+                var setting = FindMatchingSetting(propertyInfo, type);
+
+                if (!setting.Equals(default(KeyValuePair<string, string>)))
+                {
+                    propertyInfo.SetValue(this,
+                        Convert.ChangeType(setting.Value, propertyInfo.PropertyType));
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -90,7 +113,7 @@ namespace Tweak
         /// Initializes a new instance of the <see cref="SettingsBase{TSettingsReader, TSettingsWriter}"/> class.
         /// </summary>
         /// <param name="autoReadSettings">if set to <c>true</c> [automatically read settings].</param>
-        protected SettingsBase(bool autoReadSettings = true) 
+        protected SettingsBase(bool autoReadSettings = true)
             : base(autoReadSettings) { }
 
         /// <summary>
@@ -100,7 +123,7 @@ namespace Tweak
         {
             if (Settings == null)
             {
-                Read();
+                ReadSettings();
             }
 
             var updatedSettings = new Dictionary<string, string>();

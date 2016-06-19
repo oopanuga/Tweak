@@ -95,6 +95,24 @@ namespace Tweak.Tests
 
                 Assert.AreEqual(clientId2, apiSettings.ClientId);
             }
+
+            [TestCaseSource("SettingsSource")]
+            public void Should_throw_exception_if_settings_not_found(Dictionary<string, string> settings)
+            {
+                CustomSettingsReader.Settings = settings;
+                Assert.Throws<SettingsNotFoundException>(() => { new ApiSettings(); });
+            }
+
+            #region Helpers
+            public static IEnumerable<TestCaseData> SettingsSource
+            {
+                get
+                {
+                    yield return new TestCaseData(null);
+                    yield return new TestCaseData(new Dictionary<string, string>());
+                }
+            } 
+            #endregion
         }
 
         [Category("WritingSettings")]
@@ -124,6 +142,28 @@ namespace Tweak.Tests
 
                 Assert.AreEqual(newClientId.ToString(), CustomSettingsWriter.Settings["ClientId"]);
                 Assert.AreEqual(newApiKey, CustomSettingsWriter.Settings["ApiKey"]);
+            }
+
+
+            [Test]
+            public void Should_read_settings_from_source_to_ascertain_keys_if_settings_not_already_read_before_a_write_operation()
+            {
+                var settings = new Dictionary<string, string>();
+                var clientId = 4;
+                var apiKey = "1067bf35-f5b5-4939-9207-4a43cdd824dd";
+                settings.Add("ClientId", "0");
+                settings.Add("ApiKey", "");
+                CustomSettingsReader.Settings = settings;
+
+                var autoReadSettings = false;
+                var apiSettings = new ApiSettings(autoReadSettings);
+
+                apiSettings.ClientId = clientId;
+                apiSettings.ApiKey = apiKey;
+                apiSettings.Write();
+
+                Assert.AreEqual(clientId.ToString(), CustomSettingsWriter.Settings["ClientId"]);
+                Assert.AreEqual(apiKey, CustomSettingsWriter.Settings["ApiKey"]);
             }
         }
     }
