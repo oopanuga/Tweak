@@ -52,7 +52,7 @@ var apiSettings = new ApiSettings();
 var apiKey = apiSettings.ApiKey;
 ```
 
-Prevent settings from being automatically read upon instantiation of settings class. This applies to any SettingsReader including JsonSettingsReader.
+Prevent settings from being automatically read upon instantiation of settings class. This applies to any SettingsReader implementation.
 ```c#
 public class ApiSettings : SettingsBase<AppSettingsReader>, IApiSettings
 {
