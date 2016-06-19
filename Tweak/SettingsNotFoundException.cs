@@ -3,8 +3,7 @@
 namespace Tweak
 {
     /// <summary>
-    /// Represents an exception thats thrown when settings have not been defined
-    /// in the settings source.
+    /// Represents an exception thats thrown when settings not found after a read or during a write to source.
     /// </summary>
     public class SettingsNotFoundException : Exception
     {
