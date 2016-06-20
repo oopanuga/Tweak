@@ -6,7 +6,7 @@ using System.Reflection;
 namespace Tweak
 {
     /// <summary>
-    /// Represents the contract for settings class only reads settings from a settings source.
+    /// Represents the base class for Settings that can only be read from source.
     /// </summary>
     /// <typeparam name="TSettingsReader">The type of the settings reader.</typeparam>
     public class SettingsBase<TSettingsReader>
@@ -33,7 +33,7 @@ namespace Tweak
         }
 
         /// <summary>
-        /// Reads settings from a settings source using the settings reader
+        /// Reads settings from a settings source using the specified settings reader
         /// and then sets the class properties with these.
         /// </summary>
         public void Read()
@@ -101,7 +101,7 @@ namespace Tweak
     }
 
     /// <summary>
-    /// Represents the contract for settings class that reads and writes settings.
+    /// Represents the base class for Settings that can be read or written to source.
     /// </summary>
     /// <typeparam name="TSettingsReader">The type of the settings reader.</typeparam>
     /// <typeparam name="TSettingsWriter">The type of the settings writer.</typeparam>
@@ -117,7 +117,7 @@ namespace Tweak
             : base(autoReadSettings) { }
 
         /// <summary>
-        /// Writes settings to a settings source using the settings writer.
+        /// Writes settings to a settings source using the specified settings writer.
         /// </summary>
         public void Write()
         {
