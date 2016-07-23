@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api.cs" />
+    <Compile Include="ApiJson.cs" />
     <Compile Include="IApiSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,6 +50,9 @@
     <Compile Include="ApiSettingsJson.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Api.Settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="ApiSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

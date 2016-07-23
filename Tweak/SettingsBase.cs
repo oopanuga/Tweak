@@ -65,20 +65,38 @@ namespace Tweak
         {
             var setting = Settings.LastOrDefault(s =>
             {
-                if (s.Key.IndexOf('.') == -1) return s.Key == propertyInfo.Name;
+                if (s.Key.IndexOf('.') == -1)
+                {
+                    return s.Key == propertyInfo.Name;
+                }
 
                 var lastDotIndex = s.Key.LastIndexOf('.');
                 var className = s.Key.Substring(0, lastDotIndex);
                 var propertyName = s.Key.Substring(lastDotIndex + 1);
 
-                if (s.Key.Split('.').Length > 2)
+                if (s.Key.Split('.').Length == 2 && !className.Contains("+"))
                 {
-                    return className == type.FullName
-                           && propertyName == propertyInfo.Name;
+                    return className == type.Name
+                        && propertyName == propertyInfo.Name;
                 }
 
-                return className == type.Name
+                if (!type.IsNested)
+                {
+                    return className == type.FullName
                        && propertyName == propertyInfo.Name;
+                }
+
+                if (propertyName != propertyInfo.Name) return false;
+
+                if (className.Contains("+"))
+                {
+                    return className == type.FullName ||
+                           className == type.FullName.Replace(type.Namespace, "").Trim('.');
+                }
+
+                var fullNameWithoutPlusSign = type.FullName.Replace("+", ".");
+                return className == fullNameWithoutPlusSign ||
+                       className == fullNameWithoutPlusSign.Replace(type.Namespace, "").Trim('.');
             });
 
             return setting;

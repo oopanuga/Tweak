@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingBaseTests.cs" />
+    <Compile Include="TestClasses\Api.cs" />
     <Compile Include="TestClasses\ApiSettings.cs" />
     <Compile Include="TestClasses\CustomSettingsWriter.cs" />
     <Compile Include="TestClasses\ClientDetails.cs" />

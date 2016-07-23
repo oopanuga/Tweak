@@ -103,6 +103,66 @@ namespace Tweak.Tests
                 Assert.Throws<SettingsNotFoundException>(() => { new ApiSettings(); });
             }
 
+            [Test]
+            public void Should_match_nested_class_name_with_left_side_of_last_dot_and_property_name_with_right_side_of_last_dot_in_setting_key_when_parent_class_name_is_specified()
+            {
+                var settings = new Dictionary<string, string>();
+                var clientId = 4;
+                settings.Add("Api.Settings.ClientId", clientId.ToString());
+                CustomSettingsReader.Settings = settings;
+
+                var apiSettings = new Api.Settings();
+                var clientDetails = new ClientDetails();
+
+                Assert.AreEqual(clientId, apiSettings.ClientId);
+                Assert.AreEqual(0, clientDetails.ClientId);
+            }
+
+            [Test]
+            public void Should_match_nested_class_name_with_left_side_of_last_dot_and_property_name_with_right_side_of_last_dot_in_setting_key_when_parent_class_name_is_specified_and_is_joined_to_nestetd_class_by_plus_sign()
+            {
+                var settings = new Dictionary<string, string>();
+                var clientId = 4;
+                settings.Add("Api+Settings.ClientId", clientId.ToString());
+                CustomSettingsReader.Settings = settings;
+
+                var apiSettings = new Api.Settings();
+                var clientDetails = new ClientDetails();
+
+                Assert.AreEqual(clientId, apiSettings.ClientId);
+                Assert.AreEqual(0, clientDetails.ClientId);
+            }
+
+            [Test]
+            public void Should_match_full_nested_class_name_with_left_side_of_last_dot_and_property_name_with_right_side_of_last_dot_in_setting_key_when_parent_class_name_is_specified()
+            {
+                var settings = new Dictionary<string, string>();
+                var clientId = 4;
+                settings.Add("Tweak.Tests.TestClasses.Api.Settings.ClientId", clientId.ToString());
+                CustomSettingsReader.Settings = settings;
+
+                var apiSettings = new Api.Settings();
+                var clientDetails = new ClientDetails();
+
+                Assert.AreEqual(clientId, apiSettings.ClientId);
+                Assert.AreEqual(0, clientDetails.ClientId);
+            }
+
+            [Test]
+            public void Should_match_full_nested_class_name_with_left_side_of_last_dot_and_property_name_with_right_side_of_last_dot_in_setting_key_when_parent_class_name_is_specified_and_is_joined_to_nestetd_class_by_plus_sign()
+            {
+                var settings = new Dictionary<string, string>();
+                var clientId = 4;
+                settings.Add("Tweak.Tests.TestClasses.Api+Settings.ClientId", clientId.ToString());
+                CustomSettingsReader.Settings = settings;
+
+                var apiSettings = new Api.Settings();
+                var clientDetails = new ClientDetails();
+
+                Assert.AreEqual(clientId, apiSettings.ClientId);
+                Assert.AreEqual(0, clientDetails.ClientId);
+            }
+
             #region Helpers
             public static IEnumerable<TestCaseData> SettingsSource
             {
